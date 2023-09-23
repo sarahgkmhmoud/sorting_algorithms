@@ -35,7 +35,7 @@ void insertion_sort_list(listint_t **list)
 			if (!ptr2->prev)
 			*list = ptr2;
 			print_list(*list);
-			if (ptr2->n > temp2->n)
+			if (ptr2->n >= temp2->n)
 				{
 				ptr2 = temp1;
 				}
