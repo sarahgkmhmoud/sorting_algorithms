@@ -8,42 +8,33 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *temp, *ptr1, *ptr2;
+	listint_t *temp1, *temp2, *ptr1, *ptr2;
+	if (*list == NULL || (*list)->next == NULL)
+		return;
 
 	ptr2 = (*list)->next;
 	while(ptr2 != NULL)
 	{
 		ptr1 = ptr2->prev;
-		if (ptr2->n >= ptr1->n)
-		{
-			print_list(*list);
-			return;
-		}
+		temp2 = ptr2->next;
 		while(ptr2->n < ptr1->n || ptr1 != NULL)
 		{
-			ptr1 = ptr1->prev;
+			temp1 = ptr1->prev;
+			ptr1->next = ptr2->next;
+			ptr2->next->prev = ptr1;
+			if(ptr1->prev != NULL)
+			{
+				ptr1->prev->next = ptr2;
+				ptr1->prev = ptr2;
+			}
+			else
+			{
+				*list = ptr2;
+			}
+			ptr2->prev = ptr1->prev;
+			print_list(*list);
+			ptr1 = temp1;
 		}
-		temp = ptr2->next;
-		ptr2->prev->next = ptr2->next;
-		ptr2->next->prev = ptr2->prev;
-		
-		if (ptr1 == NULL)
-		{
-			(*list)->next->prev = ptr2;
-			ptr2->next = *list;
-			*list = ptr2;
-		
-		}
-		else
-		{
-			ptr1->next->prev = ptr2;
-			ptr2->next = ptr1->next;
-			ptr1->next = ptr2;
-		}
-		ptr2->prev = ptr1;
-		print_list(*list);
-		ptr2 = temp;
-
+		ptr2 = temp2;
 	}
-	print_list(*list);
 }
