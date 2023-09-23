@@ -17,7 +17,7 @@ void insertion_sort_list(listint_t **list)
 	{
 		ptr1 = ptr2->prev;
 		temp2 = ptr2->next;
-		while(ptr2->n < ptr1->n || ptr1 != NULL)
+		while(ptr2->n < ptr1->n && ptr1 != NULL)
 		{
 			temp1 = ptr1->prev;
 			ptr1->next = ptr2->next;
