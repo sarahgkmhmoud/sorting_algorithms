@@ -1,61 +1,57 @@
-#include"sort.h"
-/**
- *bubble_sort - sort the array by using bubble sort algorithm
- *@array: the array of  int element
- *@size: size of array
-*/
-void insertion_sort_list(listint_t **list)
+
+
+#include "sort.h"
+
+void swap(int *x, int *y)
 {
-	listint_t  *current, *tmp;
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
 
-	current = (*list)->next;
-    tmp =  NULL;
+size_t partition(int *array, size_t low, size_t high, size_t size)
+{
+    int pivot = array[high];
+    size_t j;
+    size_t i = low - 1;
 
-    while (current)
+    for (j = low; j < high; j++)
     {
-        if (current->n < current->prev->n)
+        if (array[j] <= pivot)
         {
-      printf("after if condition 1\n"); 
-
-        tmp = current->prev;
-        while(tmp->prev)
-        {
-       printf("start the loop\n");
-       printf("current->n = %i\n",current->n);
-            if (tmp->n < current->n)
+            i++;
+            if (i != j)
             {
-        printf("after if condition 2\n"); 
-
-          current->next->prev = current->prev;
-        printf("current->next->prev = current->prev\n");
-          current->prev->next = current->next;
-          printf("current->prev->next = current->next;\n");
-          tmp->next->prev = current;
-                  printf(" tmp->next->prev = current;\n");
-          tmp->next = current;
-          printf(" tmp->next = current;\n");
-
-          current->prev = tmp;
-          printf(" current->prev = tmp;\n"); 
-        break;
+                swap(&array[i], &array[j]);
+                print_array(array, size);
             }
-            tmp = tmp->prev;
-
-         if (tmp->prev == NULL)
-        {
-        printf("tmp->prev is null\n");
-       current->next->prev = current->prev;
-          current->prev->next = current->next;
-          tmp->next->prev = current;
-          tmp->next = current;
-          current->prev = tmp;
-          *list = current; 
-          break;
         }
-          print_list(*list);
-        }
-       
-        }
-        current = current->next;
-     }
     }
+
+    swap(&array[i + 1], &array[high]);
+                print_array(array, size);
+
+    return i + 1;
+}
+
+void quicksort_recursive(int *array, ssize_t low, ssize_t high, size_t size)
+{
+    if (low < high)
+    {
+        size_t pivot = partition(array, low, high, size);
+
+        quicksort_recursive(array, low, pivot - 1, size);
+        quicksort_recursive(array, pivot + 1, high, size);
+    }
+}
+
+void quick_sort(int *array, size_t size)
+{
+    if (array == NULL || size < 2)
+        return;
+
+    quicksort_recursive(array, 0, size - 1, size);
+}
+
+
+

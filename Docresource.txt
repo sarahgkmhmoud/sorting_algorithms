@@ -7,3 +7,7 @@ https://flexiple.com/algorithms/big-o-notation-cheat-sheet | منار
 https://www.youtube.com/playlist?list=PLrW6ND2wzt4qVfoiiblU95KOWuEnI3xDV | نوشن
 https://www.linkedin.com/posts/nubcoder_15-important-algorithms-ugcPost-7110106351300710401-3gIt/?utm_source=share&utm_medium=member_android| marwa ashraf
 https://chat.openai.com/share/bba2d868-8195-4712-b0d1-171fb2d264d8 | mahmoud
+https://learntocodetogether.com/quicksort/
+https://codereview.stackexchange.com/questions/258962/quicksort-using-lomuto-partition-scheme-in-c
+https://www.educative.io/answers/hoares-vs-lomuto-partition-scheme-in-quicksort
+https://www.javatpoint.com/quick-sort-in-c
