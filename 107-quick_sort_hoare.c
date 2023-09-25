@@ -30,16 +30,14 @@ i = low - 1;
 j = high + 1;
 while (1)
 {
-	do
-	{
+	do {
 		i++;
-	}while (array[i] < pivot);
-	do
-	{
+	} while (array[i] < pivot);
+	do {
 		j--;
-	}while (array[j] > pivot);
+	} while (array[j] > pivot);
 	if (i >= j)
-		return (j);
+		return (i);
 
 	swap(&array[i], &array[j]);
 	print_array(array, size);
@@ -62,8 +60,8 @@ void quic_rec_hoare(int *array, ssize_t low, ssize_t high, size_t size)
 	{
 	size_t pivot = partitions_hoare(array, low, high, size);
 
-	quic_rec_hoare(array, low, pivot, size);
-	quic_rec_hoare(array, pivot + 1, high, size);
+	quic_rec_hoare(array, low, pivot - 1, size);
+	quic_rec_hoare(array, pivot, high, size);
 	}
 }
 
