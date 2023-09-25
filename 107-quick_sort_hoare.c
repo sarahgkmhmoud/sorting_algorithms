@@ -66,7 +66,7 @@ void quic_rec_hoare(int *array, ssize_t low, ssize_t high, size_t size)
 }
 
 /**
- *quick_sort - sorting
+ *quick_sort_hoare - sorting
  *@array: array
  *@size: size
 */
