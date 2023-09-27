@@ -32,6 +32,7 @@ void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
+void count_sort(int *array, size_t size, int place);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 void quic_rec_hoare(int *array, ssize_t low, ssize_t high, size_t size);
